@@ -1,0 +1,21 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ephemeral-secret-share"
+version = "0.1.0"
+description = "Share secrets via one-time links. Client-side encrypted. Self-hosted."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+dependencies = [
+    "flask>=3.0",
+    "cryptography>=42.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ess"]
+
+[project.scripts]
+ess = "ess.cli:main"
