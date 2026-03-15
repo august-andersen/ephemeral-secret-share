@@ -1,13 +1,13 @@
 # ephemeral-secret-share
 
-Share secrets via one-time links. Client-side encrypted. Self-hosted. Zero dependencies on external services.
+Share secrets via one-time links — client-side encrypted, self-hosted, zero dependencies on external services.
 
 ## How it works
 
-- You run `ess "my-secret"` — it encrypts the secret locally with AES-256-GCM, starts a web server, and gives you a one-time link.
+- When you run `ess "my-secret"`, it encrypts the secret locally with AES-256-GCM, starts a web server, and gives you a one-time link.
 - The encryption key lives only in the URL fragment (`#...`), which browsers never send to the server. The server only stores the ciphertext.
 - The recipient opens the link, clicks "Reveal Secret", and the browser decrypts the secret client-side using the Web Crypto API.
-- After one view, the ciphertext is permanently deleted from server memory. The link is dead.
+- After one view, the ciphertext is permanently deleted from server memory and the link is dead.
 
 ## Installation
 
@@ -53,12 +53,12 @@ ess
 
 ## Security
 
-- **AES-256-GCM** authenticated encryption — integrity and confidentiality.
+- **AES-256-GCM** authenticated encryption.
 - Encryption and decryption happen **client-side only** (Python CLI and browser).
 - The server stores and serves only ciphertext. It never sees the plaintext or the key.
-- The encryption key is in the **URL fragment** (`#...`), which is [never sent to the server](https://www.rfc-editor.org/rfc/rfc3986#section-3.5) by browsers.
-- Secrets are stored **in memory only** — lost when the server stops.
-- Each secret is **deleted immediately** after being retrieved once.
+- The encryption key is in the URL fragment (`#...`), which is [never sent to the server](https://www.rfc-editor.org/rfc/rfc3986#section-3.5) by browsers.
+- Secrets are stored in memory only, lost when the server stops.
+- Each secret is deleted immediately after being retrieved once or after expiry.
 
 ## License
 
