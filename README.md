@@ -4,12 +4,18 @@ Share secrets via one-time links — client-side encrypted, self-hosted, zero de
 
 ## How it works
 
-- When you run `ess "my-secret"`, it encrypts the secret locally with AES-256-GCM, starts a web server, and gives you a one-time link.
+- When you run `ess "my-secret"`, it encrypts the secret locally with AES-256-GCM, opens a public tunnel via [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/), and gives you a shareable one-time link.
 - The encryption key lives only in the URL fragment (`#...`), which browsers never send to the server. The server only stores the ciphertext.
-- The recipient opens the link, clicks "Reveal Secret", and the browser decrypts the secret client-side using the Web Crypto API.
+- The recipient opens the link on any device, clicks "View secret", and the browser decrypts the secret client-side using the Web Crypto API.
 - After one view, the ciphertext is permanently deleted from server memory and the link is dead.
 
 ## Installation
+
+Requires `cloudflared` for public sharing (auto-installed via Homebrew on first run if not present):
+
+```
+brew install cloudflared
+```
 
 With [pipx](https://pipx.pypa.io/) (recommended):
 
@@ -34,8 +40,11 @@ pipx install .
 ## Usage
 
 ```bash
-# Share a secret
+# Share a secret (public link via Cloudflare Tunnel)
 ess "sk-ant-abc123-my-api-key"
+
+# Localhost only (no tunnel)
+ess "my-secret" --local
 
 # With expiry
 ess "my-secret" --expires 1h
