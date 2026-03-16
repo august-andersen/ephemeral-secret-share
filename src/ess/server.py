@@ -13,6 +13,7 @@ _lock = threading.Lock()
 
 def create_app() -> Flask:
     app = Flask(__name__)
+    app.url_map.strict_slashes = False
     app.config["JSON_SORT_KEYS"] = False
 
     @app.route("/s/<secret_id>")

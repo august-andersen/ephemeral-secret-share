@@ -10,7 +10,7 @@ def get_viewer_html() -> str:
 body {
     background: #0a0a0a;
     color: #e0e0e0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: Georgia, serif;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -23,25 +23,25 @@ body {
     text-align: center;
     padding: 2.5rem 2rem;
 }
-.lock { font-size: 2.5rem; margin-bottom: 1rem; }
 h1 { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.75rem; }
 .sub { color: #888; font-size: 0.9rem; line-height: 1.5; margin-bottom: 1.5rem; }
 #reveal-btn {
-    background: #fff;
-    color: #0a0a0a;
-    border: none;
-    padding: 0.75rem 2rem;
-    font-size: 1rem;
-    font-weight: 600;
+    background: transparent;
+    color: #888;
+    border: 1px solid #444;
+    padding: 0.65rem 1.75rem;
+    font-size: 0.95rem;
+    font-weight: 400;
+    font-family: Georgia, serif;
     border-radius: 6px;
     cursor: pointer;
-    transition: opacity 0.15s;
+    transition: color 0.15s, border-color 0.15s;
 }
-#reveal-btn:hover { opacity: 0.85; }
+#reveal-btn:hover { color: #ccc; border-color: #666; }
 #secret-box {
     display: none;
-    background: #1a1a1a;
-    border: 1px solid #333;
+    background: #050505;
+    border: 1px solid #222;
     border-radius: 6px;
     padding: 1.25rem;
     margin-top: 1.5rem;
@@ -81,10 +81,9 @@ h1 { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.75rem; }
 </head>
 <body>
 <div class="card">
-    <div class="lock">&#x1f512;</div>
     <h1 id="title">You\'ve received a secret.</h1>
     <p class="sub" id="subtitle">This secret can only be viewed once. After you reveal it, it will be permanently deleted.</p>
-    <button id="reveal-btn" onclick="revealSecret()">Reveal Secret</button>
+    <button id="reveal-btn" onclick="revealSecret()">View secret</button>
     <div id="secret-box">
         <div id="secret-text"></div>
         <button id="copy-btn" onclick="copySecret()">Copy to clipboard</button>
