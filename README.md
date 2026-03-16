@@ -5,7 +5,7 @@
 <h1 align="center">ephemeral-secret-share</h1>
 
 <p align="center">
-  Share secrets via one-time links — client-side encrypted, self-hosted, zero dependencies on external services.
+  Share secrets via one-time links — client-side encrypted, self-hosted, instant deletion.
 </p>
 
 <p align="center">
