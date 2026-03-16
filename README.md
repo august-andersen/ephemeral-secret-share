@@ -1,12 +1,28 @@
-# ephemeral-secret-share
+<p align="center">
+  <img src="assets/logo.png" alt="ephemeral-secret-share" width="120">
+</p>
 
-Share secrets via one-time links — client-side encrypted, self-hosted, zero dependencies on external services.
+<h1 align="center">ephemeral-secret-share</h1>
+
+<p align="center">
+  Share secrets via one-time links — client-side encrypted, self-hosted, zero dependencies on external services.
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/python-3.10+-3776AB?logo=python&logoColor=white" alt="Python 3.10+">
+  <img src="https://img.shields.io/badge/encryption-AES--256--GCM-2ea44f" alt="AES-256-GCM">
+  <img src="https://img.shields.io/badge/framework-Flask-000000?logo=flask&logoColor=white" alt="Flask">
+  <img src="https://img.shields.io/badge/tunnel-Cloudflare-F38020?logo=cloudflare&logoColor=white" alt="Cloudflare Tunnel">
+  <img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License">
+</p>
+
+---
 
 ## How it works
 
-- When you run `ess "my-secret"`, it encrypts the secret locally with AES-256-GCM, opens a public tunnel via [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/), and gives you a shareable one-time link.
+- Run `ess "my-secret"` — encrypts locally with AES-256-GCM, opens a public tunnel via [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/), and gives you a shareable one-time link.
 - The encryption key lives only in the URL fragment (`#...`), which browsers never send to the server. The server only stores the ciphertext.
-- The recipient opens the link on any device, clicks "View secret", and the browser decrypts the secret client-side using the Web Crypto API.
+- The recipient opens the link on any device, clicks "View secret", and the browser decrypts client-side using the Web Crypto API.
 - After one view, the ciphertext is permanently deleted from server memory and the link is dead.
 
 ## Installation
